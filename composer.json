@@ -1,0 +1,10 @@
+{
+    "name": "webreactor/db-driver",
+    "description": "Database driver",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Reactor\\Database\\": "src/"
+        }
+    }
+}
