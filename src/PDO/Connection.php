@@ -91,9 +91,11 @@ class Connection implements ConnectionInterface {
         return ' where '.$where;
     }
 
-    public function select($table, $where_data = array(), $where = '') {
-        if ($where === '') {
-            $where = $this->buildPairs(array_keys($where_data), 'and');
+    public function select($table, $where = null) {
+        $where_data = array();
+        if (is_array($where)) {
+            $where = $this->buildPairs(array_keys($where), 'and');
+            $where_data = $where;
         }
         return $this->sql('select * from `' . $table . '`'
             . $this->wrapWhere($where), $where_data);
@@ -123,9 +125,11 @@ class Connection implements ConnectionInterface {
         return implode(' ' . $delimeter . ' ', $pairs);
     }
 
-    public function update($table, $data, $where_data = array(), $where = '') {
-        if ($where === '') {
-            $where = $this->buildPairs(array_keys($where_data), 'and');
+    public function update($table, $data, $where = null) {
+        $where_data = array();
+        if (is_array($where)) {
+            $where = $this->buildPairs(array_keys($where), 'and');
+            $where_data = $where;
         }
         $query = $this->sql('update `' . $table . '` set '
             . $this->buildPairs(array_keys($data)) 
@@ -133,9 +137,11 @@ class Connection implements ConnectionInterface {
         return $query->count();
     }
 
-    public function delete($table, $where_data = array(), $where = '') {
-        if ($where === '') {
-            $where = $this->buildPairs(array_keys($where_data), 'and');
+    public function delete($table, $where = null) {
+        $where_data = array();
+        if (is_array($where)) {
+            $where = $this->buildPairs(array_keys($where), 'and');
+            $where_data = $where;
         }
         $query = $this->sql('delete from `' . $table . '` '
             . $this->wrapWhere($where), $where_data);
