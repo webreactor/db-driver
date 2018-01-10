@@ -8,7 +8,7 @@ interface ConnectionInterface {
     public function lastId($name = null);
     public function insert($table, $data);
     public function replace($table, $data);
-    public function update($table, $data, $where_data = array(), $where = '');
+    public function update($table, $data, $where = null);
     public function pages($query, $parameters, $page, $per_page, $total_rows = null);
 
 }
