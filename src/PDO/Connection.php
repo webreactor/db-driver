@@ -94,8 +94,8 @@ class Connection implements ConnectionInterface {
     public function select($table, $where = null) {
         $where_data = array();
         if (is_array($where)) {
-            $where = $this->buildPairs(array_keys($where), 'and');
             $where_data = $where;
+            $where = $this->buildPairs(array_keys($where), 'and');
         }
         return $this->sql('select * from `' . $table . '`'
             . $this->wrapWhere($where), $where_data);
@@ -128,8 +128,8 @@ class Connection implements ConnectionInterface {
     public function update($table, $data, $where = null) {
         $where_data = array();
         if (is_array($where)) {
-            $where = $this->buildPairs(array_keys($where), 'and');
             $where_data = $where;
+            $where = $this->buildPairs(array_keys($where), 'and');
         }
         $query = $this->sql('update `' . $table . '` set '
             . $this->buildPairs(array_keys($data)) 
@@ -140,8 +140,8 @@ class Connection implements ConnectionInterface {
     public function delete($table, $where = null) {
         $where_data = array();
         if (is_array($where)) {
-            $where = $this->buildPairs(array_keys($where), 'and');
             $where_data = $where;
+            $where = $this->buildPairs(array_keys($where), 'and');
         }
         $query = $this->sql('delete from `' . $table . '` '
             . $this->wrapWhere($where), $where_data);
